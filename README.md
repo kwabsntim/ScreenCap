@@ -1,4 +1,4 @@
-#ScreenCap
+# ScreenCap
 
 This is a simple Android application built with Jetpack Compose.
 
