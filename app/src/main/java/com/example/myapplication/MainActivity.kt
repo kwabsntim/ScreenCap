@@ -12,12 +12,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.material3.Button
 import com.example.myapplication.ui.theme.MyApplicationTheme
+import androidx.compose.foundation.background
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.Alignment
 
 
 class MainActivity : ComponentActivity() {
@@ -26,32 +30,34 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyApplicationTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    FilledButtonExample(
-                        modifier=Modifier.padding(innerPadding),
-                        onClick ={
-
-                        })
-
+                Box(modifier=Modifier.fillMaxSize().background(Color.White), contentAlignment = Alignment.Center){
+                    Scaffold(modifier = Modifier.fillMaxSize(), containerColor = Color.Transparent) { innerPadding ->
+                        Box(
+                            modifier=Modifier.fillMaxSize(),
+                            contentAlignment=Alignment.Center
+                        ) {
+                            FilledButtonExample(
+                                modifier = Modifier.padding(innerPadding),
+                                onClick = {})
                         }
+
+                    }
+                }
+
 
                 }
             }
         }
     }
-
-
-
 @Composable
 fun FilledButtonExample(onClick: () -> Unit,modifier: Modifier=Modifier) {
     //wrapping the button in a box to center it on the screen
-    Box(modifier=Modifier)
     Button(
         onClick = { onClick() },
-        modifier = modifier,
+        modifier = modifier.size(90.dp),
         shape= CircleShape,
         colors=ButtonDefaults.buttonColors(containerColor = Color.Red,contentColor=Color.White),
     ) {
-        Text("Start Recording")
+        Text("Record")
     }
 }
