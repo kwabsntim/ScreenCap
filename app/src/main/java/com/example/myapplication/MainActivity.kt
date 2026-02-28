@@ -44,6 +44,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun FilledButtonExample(onClick: () -> Unit,modifier: Modifier=Modifier) {
+    //wrapping the button in a box to center it on the screen
+    Box(modifier=Modifier)
     Button(
         onClick = { onClick() },
         modifier = modifier,
